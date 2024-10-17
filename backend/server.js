@@ -1,16 +1,23 @@
-// server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
-// Initialize environment variables
+// Load environment variables
 dotenv.config();
 
-// Create the Express app
 const app = express();
 
 // Middleware for JSON
 app.use(express.json());
+
+// Import register and login routes
+const registerRoutes = require('./routes/register/auth');
+const loginRoutes = require('./routes/login/auth');
+
+// Use the routes
+app.use('/api/auth', registerRoutes);
+app.use('/api/auth', loginRoutes);
+
 
 // Basic Route
 app.get('/', (req, res) => {
@@ -18,7 +25,7 @@ app.get('/', (req, res) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 3000;  // Default to port 3000
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
