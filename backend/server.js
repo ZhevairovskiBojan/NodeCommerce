@@ -13,10 +13,12 @@ app.use(express.json());
 // Import register and login routes
 const registerRoutes = require('./routes/register/auth');
 const loginRoutes = require('./routes/login/auth');
+const profileRoute = require('./routes/profiles/profile');
 
 // Use the routes
 app.use('/api/auth', registerRoutes);
 app.use('/api/auth', loginRoutes);
+app.use('/api/user', profileRoute);
 
 
 // Basic Route
