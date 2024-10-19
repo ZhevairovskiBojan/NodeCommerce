@@ -10,21 +10,26 @@ const app = express();
 // Middleware for JSON
 app.use(express.json());
 
-// Import register and login routes
+// Import routes
 const registerRoutes = require('./routes/register/auth');
 const loginRoutes = require('./routes/login/auth');
 const profileRoute = require('./routes/profiles/profile');
+const adminRoutes = require('./routes/admin/admin');  
 
 // Use the routes
 app.use('/api/auth', registerRoutes);
 app.use('/api/auth', loginRoutes);
 app.use('/api/user', profileRoute);
+app.use('/api/admin', adminRoutes);  
+
 
 
 // Basic Route
 app.get('/', (req, res) => {
   res.send('Welcome to the E-commerce API!');
 });
+
+
 
 // Start the server
 const PORT = process.env.PORT || 3000;
