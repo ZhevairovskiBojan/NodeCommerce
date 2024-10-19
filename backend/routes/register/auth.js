@@ -25,9 +25,9 @@ router.post('/register', async (req, res) => {
     await user.save();
 
     // Log user details before generating JWT
-    console.log('User ID:', user._id);
-    console.log('User Role:', user.role);
-    console.log('JWT_SECRET:', process.env.JWT_SECRET);  // Log to verify JWT secret
+    // console.log('User ID:', user._id);
+    // console.log('User Role:', user.role);
+    // console.log('JWT_SECRET:', process.env.JWT_SECRET);  // Log to verify JWT secret
 
     // Generate JWT token
     const payload = { userId: user._id, role: user.role };  // Include role in the payload
@@ -36,9 +36,6 @@ router.post('/register', async (req, res) => {
     // Send token in response
     res.status(201).json({ token });
   } catch (err) {
-    // Detailed error logging
-    console.error('Error during registration:', err.message);
-    console.error('Stack Trace:', err.stack);  
     res.status(500).json({ error: 'Server error' });
   }
 });

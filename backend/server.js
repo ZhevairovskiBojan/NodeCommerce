@@ -29,13 +29,10 @@ app.use('/api/cart', cartRoutes);
 app.use('/api/products', productRoutes);
 
 
-
-
 // Basic Route
 app.get('/', (req, res) => {
   res.send('Welcome to the E-commerce API!');
 });
-
 
 
 // Start the server
