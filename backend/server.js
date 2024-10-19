@@ -15,12 +15,16 @@ const registerRoutes = require('./routes/register/auth');
 const loginRoutes = require('./routes/login/auth');
 const profileRoute = require('./routes/profiles/profile');
 const adminRoutes = require('./routes/admin/admin');  
+const orderRoutes = require('./routes/orders/order');
+const cartRoutes = require('./routes/cart/cart');
 
 // Use the routes
 app.use('/api/auth', registerRoutes);
 app.use('/api/auth', loginRoutes);
 app.use('/api/user', profileRoute);
 app.use('/api/admin', adminRoutes);  
+app.use('/api/orders', orderRoutes);
+app.use('/api/cart', cartRoutes);
 
 
 

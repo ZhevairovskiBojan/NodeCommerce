@@ -5,8 +5,8 @@ const router = express.Router();
 
 // Admin-only route to manage products
 router.get('/products', authMiddleware, roleMiddleware(['admin']), (req, res) => {
-  // Only admins can access this route
   res.send('Welcome Admin! You can manage products here.');
 });
 
 module.exports = router;
+
