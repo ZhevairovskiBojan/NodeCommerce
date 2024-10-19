@@ -37,3 +37,13 @@ frontend/
 │   ├── index.js                # Entry point for React
 │   └── styles/                 # (Optional) Custom CSS styles
 └── package.json                # Frontend dependencies and scripts
+
+
+Route Name	Method	URL	Access
+Register	POST	/api/auth/register	Public
+Login	POST	/api/auth/login	Public
+Profile	GET	/api/user/profile	Authenticated
+Admin Products	GET	/api/admin/products	Admin Only
+Orders	Various	/api/orders	Authenticated
+Cart	Various	/api/cart	Authenticated
+Products	Various	/api/products	Public/Admin

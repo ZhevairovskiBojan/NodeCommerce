@@ -21,10 +21,6 @@ router.post('/register', async (req, res) => {
       role: role || 'user',  // Default to 'user' if no role is provided
     });
     
-    // Hash the password
-    const salt = await bcrypt.genSalt(10);
-    user.password = await bcrypt.hash(password, salt);
-
     // Save the new user
     await user.save();
 
@@ -42,7 +38,7 @@ router.post('/register', async (req, res) => {
   } catch (err) {
     // Detailed error logging
     console.error('Error during registration:', err.message);
-    console.error('Stack Trace:', err.stack);  // Log the stack trace for debugging
+    console.error('Stack Trace:', err.stack);  
     res.status(500).json({ error: 'Server error' });
   }
 });
