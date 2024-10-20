@@ -1,13 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cors = require('cors'); 
 
 // Load environment variables
 dotenv.config();
 
 const app = express();
 
-// Middleware for JSON
+app.use(cors({ origin: 'http://localhost:3000' }));
+
 app.use(express.json());
 
 // Import routes
@@ -36,7 +38,7 @@ app.get('/', (req, res) => {
 
 
 // Start the server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
