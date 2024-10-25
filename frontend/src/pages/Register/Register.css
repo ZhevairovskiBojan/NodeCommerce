@@ -1,66 +1,144 @@
-/* General page styling */
-.register-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #c8ecd7;
-  }
-  
-  .register-box {
-    background-color: #eaeaf0;
-    padding: 2rem;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  .register-box h1 {
-    margin-bottom: 1.5rem;
-    font-size: 24px;
-    text-align: center;
-    color: #333;
-  }
-  
-  .register-box form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .register-box input {
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  .register-box button {
-    padding: 0.75rem;
-    background-color: #6683a2;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .register-box button:hover {
-    background-color: #0056b3;
-  }
-  
-  .error-message {
-    color: red;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 600px) {
-    .register-box {
-      width: 90%;
-    }
-  }
-  
+/* Importing Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 0 10px;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("/public/images/background-register.jpg") no-repeat center center;
+  background-size: cover;
+  z-index: -1; 
+}
+
+
+.wrapper {
+  width: 400px;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.input-field {
+  position: relative;
+  border-bottom: 2px solid #ccc;
+  margin: 15px 0;
+}
+
+.input-field label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.15s ease;
+}
+
+.input-field input {
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #fff;
+}
+
+.input-field input:focus ~ label,
+.input-field input:valid ~ label {
+  font-size: 0.8rem;
+  top: 10px;
+  transform: translateY(-120%);
+}
+
+.forget {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 25px 0 35px 0;
+  color: #fff;
+}
+
+#remember {
+  accent-color: #fff;
+}
+
+.forget label {
+  display: flex;
+  align-items: center;
+}
+
+.forget label p {
+  margin-left: 8px;
+}
+
+.wrapper a {
+  color: #efefef;
+  text-decoration: none;
+}
+
+.wrapper a:hover {
+  text-decoration: underline;
+}
+
+button {
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  color: #fff;
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.register {
+  text-align: center;
+  margin-top: 30px;
+  color: #fff;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 1rem;
+}
