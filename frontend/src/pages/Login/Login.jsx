@@ -17,36 +17,56 @@ const Login = () => {
     try {
       const response = await API.post('/auth/login', formData);
       localStorage.setItem('token', response.data.token);  // Save the token
-      navigate('/profile');  // Redirect to profile page
+      navigate('/profile');  // Redirect to profile or home page
     } catch (err) {
-      console.error('Login error:', err.response?.data || err.message);  // Log the error for debugging
-      setError(err.response?.data?.msg || 'Invalid credentials');  // Use backend message or a default
+      setError('Invalid credentials');
     }
   };
 
   return (
-    <div className="login-container">
-      <div className="login-box">
-        <h1>Login</h1>
+    <div className="wrapper">
+      <form onSubmit={handleSubmit}>
+        <h2>Login</h2>
         {error && <p className="error-message">{error}</p>}
-        <form onSubmit={handleSubmit}>
+        
+        <div className="input-field">
           <input
             type="email"
             name="email"
             placeholder="Email"
             value={formData.email}
             onChange={handleChange}
+            required
           />
+          <label>Enter your email</label>
+        </div>
+        
+        <div className="input-field">
           <input
             type="password"
             name="password"
             placeholder="Password"
             value={formData.password}
             onChange={handleChange}
+            required
           />
-          <button type="submit">Login</button>
-        </form>
-      </div>
+          <label>Enter your password</label>
+        </div>
+        
+        <div className="forget">
+          <label>
+            <input type="checkbox" id="remember" />
+            <p>Remember me</p>
+          </label>
+          <a href="#">Forgot password?</a>
+        </div>
+        
+        <button type="submit">Log In</button>
+
+        <div className="register">
+          <p>Don't have an account? <a href="/register">Register</a></p>
+        </div>
+      </form>
     </div>
   );
 };
