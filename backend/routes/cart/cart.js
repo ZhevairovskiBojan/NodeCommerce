@@ -15,6 +15,7 @@ router.post('/add', authMiddleware, async (req, res) => {
       cart = new Cart({ user: req.user, items: [] });
     }
 
+    // Check if the item already exists in the cart
     const itemIndex = cart.items.findIndex(item => item.product.toString() === productId);
 
     if (itemIndex > -1) {
@@ -28,7 +29,8 @@ router.post('/add', authMiddleware, async (req, res) => {
     await cart.save();
     res.status(200).json(cart);
   } catch (err) {
-    res.status(500).json({ error: 'Server error' });
+    console.error('Error adding item to cart:', err.message);
+    res.status(500).json({ error: 'Failed to add item to cart' });
   }
 });
 
@@ -36,9 +38,16 @@ router.post('/add', authMiddleware, async (req, res) => {
 router.get('/', authMiddleware, async (req, res) => {
   try {
     const cart = await Cart.findOne({ user: req.user }).populate('items.product');
-    res.json(cart);
+
+    // If cart doesn't exist, return an empty items array
+    if (!cart) {
+      return res.status(200).json({ items: [] });
+    }
+
+    res.status(200).json(cart);
   } catch (err) {
-    res.status(500).json({ error: 'Server error' });
+    console.error('Error fetching cart:', err.message);
+    res.status(500).json({ error: 'Failed to load cart' });
   }
 });
 
