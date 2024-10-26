@@ -5,6 +5,7 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import ProtectedRoute from './components/protectedRoutes/ProtectedRoute';
 import Dashboard from './pages/Dashboard/Dashboard';
+import Cart from './pages/Cart/Cart';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        
+        <Route path="/cart" component={Cart} />
        
         <Route
           path="/dashboard"
