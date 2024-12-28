@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const cartSchema = new mongoose.Schema({
   user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    type: mongoose.Schema.Types.ObjectId, // Must be a valid ObjectId
+    ref: 'User', // Reference to the User model
     required: true,
   },
   items: [

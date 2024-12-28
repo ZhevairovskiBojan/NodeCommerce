@@ -4,7 +4,7 @@ const User = require('../../models/UserSchema');
 const router = express.Router();
 
 // Protected Dashboard Route
-router.get('/dashboard', authMiddleware, async (req, res) => {
+router.get('/dashboard', async (req, res) => {
   try {
     // Fetch the user by ID and exclude the password field
     const user = await User.findById(req.user).select('-password');
